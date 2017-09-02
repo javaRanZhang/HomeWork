@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lanou.mapper.CostMapper">
+
+    <resultMap id="CostMap" type="com.lanou.bean.Cost">
+        <id column="cost_id" property="costId"/>
+        <result column="name" property="name"/>
+        <result column="base_duration" property="baseDuration"/>
+        <result column="base_cost" property="baseCost"/>
+        <result column="unit_cost" property="unitCost"/>
+        <result column="status" property="status"/>
+        <result column="descr" property="descr"/>
+        <result column="creatime" property="creatime"/>
+        <result column="startime" property="startime"/>
+        <result column="cost_type" property="costType"/>
+    </resultMap>
+
+    <select id="findAllCost" resultMap="CostMap">
+        Select * from cost
+    </select>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="costId" parameterType="com.lanou.bean.Cost">
+        INSERT into cost values(NULL,#{name},#{baseDuration}
+        ,#{baseCost},#{unitCost},#{status},#{descr},#{creatime},#{startime},#{costType})
+    </insert>
+
+    <delete id="deleteFee" parameterType="com.lanou.bean.Cost">
+        delete from cost where cost_id = #{id}
+    </delete>
+
+    <select id="findById" resultMap="CostMap">
+        Select * from cost where cost_id = #{id}
+    </select>
+
+    <update id="saveModi" parameterType="com.lanou.bean.Cost">
+        UPDATE cost SET name=#{name},base_duration=#{baseDuration}
+        ,base_cost=#{baseCost},unit_cost=#{unitCost},status=#{status},
+        descr=#{descr},creatime=#{creatime},startime=#{startime},cost_type=#{costType}
+        WHERE cost_id= #{costId};
+    </update>
+    <update id="startFee" parameterType="com.lanou.bean.Cost">
+        UPDATE cost SET status=1 WHERE cost_id= #{id},startime=#{timestamp};
+    </update>
+</mapper>
