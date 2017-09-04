@@ -70,6 +70,8 @@ public class CostServiceImpl implements CostService {
     }
 //    真正修改啦
     public Boolean saveModi(Cost cost) {
+        cost.setStatus("0");
+        cost.setCreatime(new Date());
         Boolean tf = costMapper.saveModi(cost);
         return tf;
     }
