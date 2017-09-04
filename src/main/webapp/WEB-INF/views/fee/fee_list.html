@@ -18,14 +18,12 @@
 
         //启用
         function startFee(id) {
-            alert(id)
             var r = window.confirm("确定要启用此资费吗？资费启用后将不能修改和删除。");
-            document.getElementById("operate_result_info").style.display = "block";
             location.href= "/startFee?id="+id;
         }
+
         //删除 --传进来个id
         function deleteFee(id) {
-
             var r = window.confirm("确定要删除此资费吗？");
             $.ajax({
                 url: "/deleteFee",
@@ -89,8 +87,9 @@
             var td3 = $("<td></td>").html("<p>" + base_duration + "</p>")
             var td4 = $("<td></td>").html("<p>" + base_cost + "</p>")
             var td5 = $("<td></td>").html("<p>" + unit_cost + "</p>")
-            var td6 = $("<td></td>").html("<p>" + creatime + "</p>")
-            var td7 = $("<td></td>").html("<p>" + startime + "</p>")
+            var td6 = $("<td></td>").html("<p>" + "<p>" + creatime == 0 | creatime==null ? "" : new Date(parseInt(creatime)).toLocaleString() + "</p>")
+            var td7 = $("<td></td>").html("<p>" + "<p>" + startime == 0 | startime==null ? "" : new Date(parseInt(startime)).toLocaleString() + "</p>")
+
 
 //              拼接这几个不变的
             var tdButton = $("<td></td>")

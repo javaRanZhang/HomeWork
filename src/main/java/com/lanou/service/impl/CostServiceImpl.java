@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -74,7 +75,7 @@ public class CostServiceImpl implements CostService {
     }
 //   启用
     public void startFee(Integer id) {
-        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-        costMapper.startFee(id,timestamp);
+        Date date = new Date();
+        costMapper.startFee(id,date);
     }
 }

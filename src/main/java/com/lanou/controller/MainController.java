@@ -63,7 +63,7 @@ public class MainController {
         return "fee/fee_add";
     }
 
-    //判断名字行不行
+    //判断添加的名字数据库中存不存在,存在提示被占用
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     @ResponseBody
     public Map<String, Boolean> add(@RequestParam("costName") String costName) {
@@ -103,13 +103,13 @@ public class MainController {
     @RequestMapping("/viewRoll")
     @ResponseBody
     public Cost viewRoll(HttpSession session) {
-        System.out.println("进来了");
         Integer id = (Integer) session.getAttribute("costId");
         System.out.println("viewRoll"+id);
         //        通过id找cost回显
         Cost cost = costService.findById(id);
         return cost;
     }
+
     //真正修改
     @RequestMapping("/saveModi")
     public String saveModi(Cost cost){

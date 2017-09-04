@@ -41,6 +41,6 @@
         WHERE cost_id= #{costId};
     </update>
     <update id="startFee" parameterType="com.lanou.bean.Cost">
-        UPDATE cost SET status=1 WHERE cost_id= #{id},startime=#{timestamp};
+        UPDATE cost SET status=1,startime=#{timestamp} WHERE cost_id= #{id};
     </update>
 </mapper>

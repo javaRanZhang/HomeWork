@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -23,5 +24,5 @@ public interface CostMapper {
 
     Boolean saveModi(Cost cost);
 
-    void startFee(@Param("id") Integer id, @Param("timestamp") Timestamp timestamp);
+    void startFee(@Param("id") Integer id, @Param("timestamp") Date timestamp);
 }
